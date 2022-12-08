@@ -17,4 +17,3 @@ import {
   tagViewComponent
 } from './components';
 </script>
-<style lang="scss" scoped></style>

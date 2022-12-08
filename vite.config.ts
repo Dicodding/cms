@@ -13,5 +13,10 @@ export default defineConfig({
       api: resolve(__dirname, './src/api')
     }
   },
-  plugins: [vue(), vueJsx()]
+  plugins: [vue(), vueJsx()],
+  build: {
+    target: 'esnext',
+    minify: 'terser', // 混淆器，terser构建后文件体积更小
+    sourcemap: false
+  }
 });

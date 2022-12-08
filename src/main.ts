@@ -3,6 +3,9 @@ import App from './App.vue';
 import { useElementPlus } from './plugins/element-plus';
 import { setupRouter } from './router/router';
 import { setupStore } from './store';
+import '@/assets/styles/index.scss';
+import '@/assets/styles/iconfont/iconfont.css';
+import '@/assets/styles/iconfont/iconfont.js';
 
 /**
  * 定义启动初始化函数
