@@ -1,5 +1,6 @@
 import { createApp } from 'vue';
 import App from './App.vue';
+import { useElementPlus } from './plugins/element-plus';
 import { setupRouter } from './router/router';
 import { setupStore } from './store';
 
@@ -11,6 +12,7 @@ const bootstrap = () => {
 
   // 安装初始化store
   setupStore(app);
+  useElementPlus(app);
 
   // 安装初始化路由
   setupRouter(app);

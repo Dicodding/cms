@@ -1,4 +1,5 @@
 import { defineComponent, ref } from 'vue';
+import { ElMenu } from 'element-plus';
 
 export const sideBarComponent = defineComponent({
   name: 'SideBar',
@@ -10,6 +11,10 @@ export const sideBarComponent = defineComponent({
     };
   },
   render() {
-    return <div>SideBar</div>;
+    return (
+      <>
+        <el-menu default-active="2" class="el-menu-vertical-demo"></el-menu>
+      </>
+    );
   }
 });
