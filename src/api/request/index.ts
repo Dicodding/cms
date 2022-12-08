@@ -1,56 +1,56 @@
-import axios from 'axios'
-import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
+import axios from 'axios';
+import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 
 interface BaseInstanceInterceptors<T = AxiosResponse> {
-  requestInterceptor?: (config: AxiosRequestConfig) => AxiosRequestConfig
-  requestInterceptorCatch?: (err: any) => any
-  responseInterceptor?: (res: T) => T
-  responseInterceptorCatch?: (err: any) => any
+  requestInterceptor?: (config: AxiosRequestConfig) => AxiosRequestConfig;
+  requestInterceptorCatch?: (err: any) => any;
+  responseInterceptor?: (res: T) => T;
+  responseInterceptorCatch?: (err: any) => any;
 }
 
 interface BaseRequestConfig<T = AxiosResponse> extends AxiosRequestConfig {
-  interceptors?: BaseInstanceInterceptors<T>
+  interceptors?: BaseInstanceInterceptors<T>;
 }
 
 class BaseRequest {
-  instance: AxiosInstance
+  instance: AxiosInstance;
 
   constructor(config: BaseRequestConfig) {
-    this.instance = axios.create(config)
+    this.instance = axios.create(config);
 
     // 全局的拦截器
     this.instance.interceptors.request.use(
       (config) => {
-        return config
+        return config;
       },
       (err) => {
-        return err
+        return err;
       }
-    )
+    );
 
     this.instance.interceptors.response.use(
       (res) => {
-        return res.data
+        return res.data;
       },
       (err) => {
-        return err
+        return err;
       }
-    )
+    );
 
     // 实例的拦截器
     this.instance.interceptors.request.use(
       config.interceptors?.requestInterceptor,
       config.interceptors?.requestInterceptorCatch
-    )
+    );
     this.instance.interceptors.response.use(
       config.interceptors?.responseInterceptor,
       config.interceptors?.responseInterceptorCatch
-    )
+    );
   }
 
   request<T = any>(config: BaseRequestConfig<T>) {
     if (config.interceptors?.requestInterceptor) {
-      config = config.interceptors.requestInterceptor(config)
+      config = config.interceptors.requestInterceptor(config);
     }
 
     return new Promise<T>((resolve, reject) => {
@@ -58,34 +58,34 @@ class BaseRequest {
         .request<any, T>(config)
         .then((res) => {
           if (config.interceptors?.responseInterceptor) {
-            res = config.interceptors.responseInterceptor(res)
+            res = config.interceptors.responseInterceptor(res);
           }
-          resolve(res)
+          resolve(res);
         })
         .catch((err: any) => {
           if (config.interceptors?.responseInterceptorCatch) {
-            err = config.interceptors.responseInterceptorCatch(err)
+            err = config.interceptors.responseInterceptorCatch(err);
           }
-          reject(err)
-        })
-    })
+          reject(err);
+        });
+    });
   }
 
   get<T = any>(config: BaseRequestConfig<T>) {
-    return this.request<T>({ ...config, method: 'GET' })
+    return this.request<T>({ ...config, method: 'GET' });
   }
 
   post<T = any>(config: BaseRequestConfig<T>) {
-    return this.request<T>({ ...config, method: 'POST' })
+    return this.request<T>({ ...config, method: 'POST' });
   }
 
   delete<T = any>(config: BaseRequestConfig<T>) {
-    return this.request<T>({ ...config, method: 'DELETE' })
+    return this.request<T>({ ...config, method: 'DELETE' });
   }
 
   patch<T = any>(config: BaseRequestConfig<T>) {
-    return this.request<T>({ ...config, method: 'PATCH' })
+    return this.request<T>({ ...config, method: 'PATCH' });
   }
 }
 
-export default BaseRequest
+export default BaseRequest;

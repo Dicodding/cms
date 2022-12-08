@@ -8,5 +8,10 @@ export default [
     meta: {
       title: '首页'
     }
+  },
+  {
+    name: 'test',
+    path: '/test',
+    component: () => import('@/views/test/index.vue')
   }
 ] as Partial<AppRouteRecordRaw>[];

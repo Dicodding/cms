@@ -13,4 +13,4 @@
  * update 更新某功能
  * optimize: 优化构建工具或运行时性能
  */
-module.exports = { extends: ['@commitlint/config-conventional'] }
+module.exports = { extends: ['@commitlint/config-conventional'] };

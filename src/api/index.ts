@@ -1,28 +1,28 @@
-import BaseRequest from './request'
-import { BASE_URL1, TIME_OUT1 } from './config'
-import { localCache } from '@/utils/cache'
+import BaseRequest from './request';
+import { BASE_URL1, TIME_OUT1 } from './config';
+import { localCache } from '@/utils/cache';
 
 const request = new BaseRequest({
   baseURL: BASE_URL1,
   timeout: TIME_OUT1,
   interceptors: {
     requestInterceptor: (config) => {
-      const token = localCache.getCache('token')
+      const token = localCache.getCache('token');
       if (token && config.headers) {
-        config.headers.Authorization = `Bearer ${token}`
+        config.headers.Authorization = `Bearer ${token}`;
       }
-      return config
+      return config;
     },
     requestInterceptorCatch: (err) => {
-      return err
+      return err;
     },
     responseInterceptor: (res) => {
-      return res
+      return res;
     },
     responseInterceptorCatch: (err) => {
-      return err
+      return err;
     }
   }
-})
+});
 
-export default request
+export default request;

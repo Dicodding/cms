@@ -25,4 +25,4 @@ module.exports = {
     eqeqeq: 2, // 强制使用 === 和 !==
     'vue/multi-word-component-names': 0
   }
-}
+};

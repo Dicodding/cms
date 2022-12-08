@@ -1,4 +1,4 @@
-import hyRequest from '..'
+import hyRequest from '..';
 
 enum AnalysisAPI {
   amountList = '/goods/amount/list',
@@ -12,35 +12,35 @@ enum AnalysisAPI {
 export function getAmountList() {
   return hyRequest.get({
     url: AnalysisAPI.amountList
-  })
+  });
 }
 
 export function getCategoryGoodsCount() {
   return hyRequest.get({
     url: AnalysisAPI.categoryGoodsCount
-  })
+  });
 }
 
 export function getCategoryGoodsSale() {
   return hyRequest.get({
     url: AnalysisAPI.categoryGoodsSale
-  })
+  });
 }
 
 export function getCategoryGoodsFavor() {
   return hyRequest.get({
     url: AnalysisAPI.categoryGoodsFavor
-  })
+  });
 }
 
 export function getGoodsSaleTop10() {
   return hyRequest.get({
     url: AnalysisAPI.goodsSaleTop10
-  })
+  });
 }
 
 export function getGoodsAddressSale() {
   return hyRequest.get({
     url: AnalysisAPI.goodsAddressSale
-  })
+  });
 }

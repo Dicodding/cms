@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx --fix",
     "format": "prettier --write \"./**/*.{html,vue,ts,js,json,md}\"",
-    "lint:style": "stylelint \"./**/*.{css,less,vue,html,scss}\" --fix"
+    "lint:style": "stylelint \"./**/*.{css,less,vue,html,scss}\" --fix --custom-syntax postcss-scss"
   },
   "dependencies": {
     "axios": "^0.27.2",
@@ -23,12 +23,14 @@
     "@typescript-eslint/eslint-plugin": "^5.30.5",
     "@typescript-eslint/parser": "^5.30.5",
     "@vitejs/plugin-vue": "^2.3.3",
+    "@vitejs/plugin-vue-jsx": "^2.1.1",
     "eslint": "^8.19.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vue": "^9.1.1",
     "husky": "^8.0.1",
     "postcss-html": "^1.5.0",
+    "postcss-scss": "^4.0.6",
     "prettier": "^2.7.1",
     "stylelint": "^14.9.1",
     "stylelint-config-prettier": "^9.0.3",
@@ -38,7 +40,7 @@
     "stylelint-order": "^5.0.0",
     "stylelint-scss": "^4.3.0",
     "typescript": "^4.5.4",
-    "vite": "^2.9.9",
+    "vite": "^3",
     "vue-tsc": "^0.34.7"
   }
 }
